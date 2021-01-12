@@ -1,0 +1,17 @@
+@font-face {
+    font-family: Tahoma;
+    src: url('../fonts/Tahoma.ttf');
+}
+
+canvas {
+    border: solid 1px #000;
+}
+
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    font-family: Tahoma !important;
+    overflow: hidden;
+}
