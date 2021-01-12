@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	<title>Snake p5.js Game</title>
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+	<div style="display: flex; flex-direction: row; margin: 24px; align-items: center;">
+		<div style="display: flex; flex-direction: column; margin-right: 100px; align-items: center;">
+			<div style="display: flex; flex-direction: column; justify-content: space-around; margin-bottom: 1em;">
+				<label for="difficulty" title="Speed increased for each collected fruit ">Choose the difficulty:</label>
+
+				<select name="difficulty" id="difficulty" style="margin-bottom: 16px;">
+					<option value=".5">Disgusting stinky hookworm (speed +0.5/fruit)</option>
+					<option value="2">Cute fatty caterpillar (speed +2/fruit)</option>
+					<option value="5">Pretty little worm (speed +5.0/fruit)</option>
+					<option value="10">Regular wonderful snake (speed +10.0/fruit)</option>
+				</select>
+			</div>
+
+			<img id="difficultyImg" src="assets/imgs/hookworm.png" style="width: 128px; margin-left: 24px;" />
+		</div>
+
+		<main>
+		</main>
+	</div>
+
+	<script src="lib/p5.min.js"></script>
+	<script src="assets/js/sketch.js"></script>
+	<script src="assets/js/fruit.js"></script>
+	<script src="assets/js/head.js"></script>
+	<script src="assets/js/tail.js"></script>
+	<script src="assets/js/hud.js"></script>
+</body>
+
+</html>
