@@ -25,7 +25,7 @@ class HUD {
     ];
 
     image(allowsfx, 10, 10);
-    if (localStorage.getItem('allowsfx') !== 'true') {
+    if (localStorage.getItem('allowsfx') === 'false') {
       tint(0, 0, 0, 126);
     }
 
@@ -74,7 +74,7 @@ class HUD {
   hideStart() {
     this.showStartText = false;
 
-    if (!music.isPlaying() && localStorage.getItem('allowsfx') === 'true') {
+    if (!music.isPlaying() && localStorage.getItem('allowsfx') !== 'false') {
       music.play();
     }
   }

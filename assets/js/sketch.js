@@ -164,7 +164,7 @@ function mouseClicked() {
       localStorage.setItem('allowsfx', 'true');
       tint(0, 0, 0, 255);
 
-      if (!music.isPlaying() && localStorage.getItem('allowsfx') === 'true') {
+      if (!music.isPlaying() && localStorage.getItem('allowsfx') !== 'false') {
         music.play();
       }
     }

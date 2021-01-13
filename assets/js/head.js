@@ -49,7 +49,7 @@ class Head {
     bite() {
         if (biteSound.isPlaying()) {
             biteSound.stop();
-        } else if (localStorage.getItem('allowsfx') === 'true') {
+        } else if (localStorage.getItem('allowsfx') !== 'false') {
             biteSound.play();
         }
     }
