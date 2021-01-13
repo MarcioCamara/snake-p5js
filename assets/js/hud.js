@@ -1,3 +1,5 @@
+let button;
+
 class HUD {
   elements = [];
 
@@ -21,6 +23,11 @@ class HUD {
       'Highest Score: ' + int(highestScore),
       'Score: ' + int(snake.score),
     ];
+
+    image(allowsfx, 10, 10);
+    if (localStorage.getItem('allowsfx') !== 'true') {
+      tint(0, 0, 0, 126);
+    }
 
     for (let i = 0; i < this.elements.length; i++) {
       const element = this.elements[i];
@@ -66,6 +73,10 @@ class HUD {
 
   hideStart() {
     this.showStartText = false;
+
+    if (!music.isPlaying() && localStorage.getItem('allowsfx') === 'true') {
+      music.play();
+    }
   }
 
   hideFinish() {
@@ -84,6 +95,10 @@ class HUD {
       strokeWeight(3);
       textSize(14);
       text('Press ENTER to try again!', width / 2, height / 2 - gap);
+
+      if (music.isPlaying()) {
+        music.stop();
+      }
     }
   }
 

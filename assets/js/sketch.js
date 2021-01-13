@@ -1,3 +1,5 @@
+let canvas;
+
 let apple;
 let snake;
 let gap = 15; // espaço entre as linhas da grid
@@ -14,12 +16,15 @@ const difficultySelection = document.getElementById('difficulty');
 
 function preload() {
   font = loadFont('assets/fonts/Tahoma.ttf');
+  biteSound = loadSound('assets/sounds/bite.mp3');
+  music = loadSound('assets/sounds/music.mp3');
+  allowsfx = loadImage('assets/imgs/allowsfx.png');
 
   difficultyChange();
 }
 
 function setup() {
-  createCanvas(600, 600);
+  canvas = createCanvas(600, 600);
 
   snake = new Head();
   apple = new Fruit();
@@ -28,7 +33,6 @@ function setup() {
   actualHighestScore = highestScore;
 
   frameRate(snake.speed);
-
 
   difficultySelection.addEventListener('change', difficultyChange);
 }
@@ -76,6 +80,8 @@ function draw() {
   snake.update();
 
   if (snake.collisionFruit(apple)) {
+    snake.bite();
+
     snake.score++;
     snake.speed += difficultyIncrement;
 
@@ -132,5 +138,35 @@ function keyPressed() {
 
   if (snake.dir) {
     hud.hideStart();
+  }
+}
+
+function mouseClicked() {
+  if (
+    mouseX > 10 &&
+    mouseX < 34 &&
+    mouseY > 10 &&
+    mouseY < 34
+  ) {
+    console.log('clicou no sfx');
+    if (localStorage.getItem('allowsfx') === 'true') {
+      localStorage.setItem('allowsfx', 'false');
+      tint(0, 0, 0, 126);
+
+      if (music.isPlaying()) {
+        music.stop();
+      }
+
+      if (biteSound.isPlaying()) {
+        biteSound.stop();
+      }
+    } else {
+      localStorage.setItem('allowsfx', 'true');
+      tint(0, 0, 0, 255);
+
+      if (!music.isPlaying() && localStorage.getItem('allowsfx') === 'true') {
+        music.play();
+      }
+    }
   }
 }

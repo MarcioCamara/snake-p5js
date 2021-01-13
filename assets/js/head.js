@@ -46,6 +46,14 @@ class Head {
         }
     }
 
+    bite() {
+        if (biteSound.isPlaying()) {
+            biteSound.stop();
+        } else if (localStorage.getItem('allowsfx') === 'true') {
+            biteSound.play();
+        }
+    }
+
     show() {
         fill('rgb(105, 255, 92)');
         stroke(0);
